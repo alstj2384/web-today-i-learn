@@ -71,7 +71,7 @@
 }
 
 .profile-info .tagline {
-  color: #777;
+  color: var(--font-default-color);
   line-height: 1.6;
 }
 
@@ -364,7 +364,7 @@ footer {
 :root {
   --primary-color: #4a7c59;
   --nav-bg-color: #fff;
-  --hero-bg-color: #f8faf8;
+  --hero-bg-color: #A7C7E7;
   --card-bg-color: #fafafa;
   --divider-color: #e8e8e8;
   --font-default-color: #333;

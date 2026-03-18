@@ -9,4 +9,25 @@ tilForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
   // TODO: 입력값을 가져와서 새 TIL 항목을 만들어 목록에 추가하세요
+  const tilDate = document.querySelector("#til-date");
+  const tilTitle = document.querySelector("#til-title");
+  const tilContent = document.querySelector("#til-content");
+
+  const titleValue = tilTitle.value.trim();
+  const contentValue = tilContent.value.trim();
+  const today = tilDate.value;
+
+  const newArticle = document.createElement("article");
+  newArticle.classList.add("til-item");
+
+  newArticle.innerHTML = `
+    <time>${today}</time>
+    <h3>${titleValue}</h3>
+    <p>${contentValue}</p>
+  `;
+
+  tilList.prepend(newArticle);
+  tilContent.value = "";
+  tilTitle.value = "";
+  tilDate.focus();
 });
