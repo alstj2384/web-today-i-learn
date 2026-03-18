@@ -26,7 +26,7 @@ tilForm.addEventListener("submit", function (event) {
     <p>${contentValue}</p>
   `;
 
-  tilList.prepend(newArticle);
+  tilList.append(newArticle);
   tilContent.value = "";
   tilTitle.value = "";
   tilDate.focus();
