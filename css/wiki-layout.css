@@ -1,3 +1,25 @@
+/* F1 스타일 폰트 (스포티하고 기계적인 느낌) */
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,700&display=swap');
+
+/* 변수 - F1 다크 테마 컬러 적용 */
+:root {
+  --primary-color: #e10600;      /* F1 공식 Red */
+  --nav-bg-color: #0b0b0e;       /* 더 깊은 딥 다크 (내비게이션) */
+  --hero-bg-color: #15151e;      /* 탄소 섬유 느낌의 메인 다크 배경 */
+  --card-bg-color: #2b2b36;      /* 카드 배경 (약간 더 밝은 다크 그레이) */
+  --divider-color: #38383f;      /* 다크 배경에 어울리는 경계선 */
+  --font-default-color: #ffffff; /* 텍스트 기본 화이트 */
+  --font-secondary-color: #b0b0b5; /* 보조 텍스트 (연그레이) */
+}
+
+/* 전체 폰트 및 다크 배경 적용 */
+body {
+  font-family: 'Titillium Web', sans-serif;
+  color: var(--font-default-color);
+  background-color: var(--hero-bg-color); /* 전체 페이지 배경 다크화 */
+  margin: 0;
+}
+
 /* 상단 내비게이션 */
 .top-nav {
   position: sticky;
@@ -7,28 +29,37 @@
   justify-content: space-between;
   padding: 0 32px;
   height: 56px;
-  background-color: var(--nav-bg-color);
-  border-bottom: 1px solid var(--divider-color);
+  background-color: var(--nav-bg-color); /* 다크 내비 */
+  border-bottom: 2px solid var(--primary-color); /* 하단 레드 라인으로 레이싱 느낌 */
   z-index: 10;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* 더 깊은 그림자 */
 }
 
 .nav-logo {
-  font-family: "Jua", serif;
-  font-size: 1.4rem;
+  font-family: 'Titillium Web', sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.6rem;
   color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
 }
 
 .nav-links {
   display: flex;
   gap: 24px;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: var(--font-default-color);
-  font-size: 0.9rem;
-  transition: color 0.2s;
+  color: var(--font-default-color); /* 화이트 텍스트 */
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.2s;
 }
 
 .nav-links a:hover {
@@ -40,7 +71,15 @@
   display: flex;
   justify-content: center;
   padding: 64px 32px;
-  background-color: var(--hero-bg-color);
+  color: #ffffff; /* 텍스트는 화이트 유지 */
+
+  /* --- [핵심] 배경 이미지 적용 --- */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)), /* 1. 글자가 잘 보이도록 반투명 블랙 그라데이션 오버레이 (강력 추천) */
+  url('../images/racing_bg.jpg'); /* 2. 실제 배경 이미지 경로 (css 폴더 기준 상위 images 폴더) */
+
+  background-size: cover;    /* 이미지가 비율을 유지하며 화면에 꽉 차게 */
+  background-position: center; /* 이미지를 중앙에 정렬 */
+  background-repeat: no-repeat; /* 이미지 반복 안 함 */
 }
 
 .profile-card {
@@ -54,9 +93,10 @@
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  background-color: #ddd;
+  background-color: #333;
   flex-shrink: 0;
   overflow: hidden;
+  border: 4px solid var(--primary-color); /* 레드 링 유지 */
 }
 
 .profile-image img {
@@ -66,13 +106,17 @@
 }
 
 .profile-info h1 {
-  font-size: 2rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
   margin-bottom: 8px;
+  letter-spacing: 1px;
 }
 
 .profile-info .tagline {
-  color: var(--font-default-color);
+  color: var(--font-secondary-color); /* 가독성을 위한 밝은 그레이 */
   line-height: 1.6;
+  font-size: 1.05rem;
 }
 
 /* 메인 콘텐츠 */
@@ -84,7 +128,7 @@ main {
 
 .content-section {
   padding: 48px 0;
-  border-bottom: 1px solid var(--divider-color);
+  border-bottom: 1px solid var(--divider-color); /* 다크 경계선 */
 }
 
 .content-section:last-child {
@@ -92,13 +136,18 @@ main {
 }
 
 .content-section h2 {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
   margin-bottom: 16px;
+  color: var(--font-default-color); /* 화이트 텍스트 */
+  border-left: 6px solid var(--primary-color); /* 섹션 제목 강조 */
+  padding-left: 12px;
 }
 
 .content-section > p,
 .section-desc {
-  color: #666;
+  color: var(--font-secondary-color);
   line-height: 1.8;
   margin-bottom: 24px;
 }
@@ -114,7 +163,12 @@ main {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 2px;
+  transition: transform 0.3s;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.02);
 }
 
 /* 인생 작품 카드 */
@@ -128,15 +182,24 @@ main {
   display: flex;
   gap: 20px;
   padding: 20px;
-  border-radius: 8px;
-  background-color: var(--card-bg-color);
+  border-radius: 4px;
+  background-color: var(--card-bg-color); /* 다크 카드 배경 */
+  border: 1px solid var(--divider-color); /* 다크 경계선 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* 더 짙은 그림자 */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.work-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  border-color: #555;
 }
 
 .work-thumbnail {
   width: 140px;
   height: 180px;
   background-color: #ddd;
-  border-radius: 4px;
+  border-radius: 2px;
   flex-shrink: 0;
   overflow: hidden;
 }
@@ -148,12 +211,14 @@ main {
 }
 
 .work-info h3 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: 700;
   margin-bottom: 8px;
+  color: var(--font-default-color); /* 화이트 텍스트 */
 }
 
 .work-info p {
-  color: #666;
+  color: var(--font-secondary-color);
   line-height: 1.6;
 }
 
@@ -166,23 +231,30 @@ main {
 
 .til-item {
   padding: 20px;
-  border-left: 3px solid var(--primary-color);
-  background-color: var(--card-bg-color);
-  border-radius: 0 8px 8px 0;
+  border-left: 5px solid var(--primary-color); /* 강렬한 레드 라인 */
+  background-color: var(--card-bg-color); /* 다크 배경 */
+  border-radius: 0 4px 4px 0;
+  border-top: 1px solid var(--divider-color);
+  border-right: 1px solid var(--divider-color);
+  border-bottom: 1px solid var(--divider-color);
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
 }
 
 .til-item time {
   font-size: 0.85rem;
-  color: #999;
+  font-weight: 600;
+  color: #aaa; /* 조금 더 밝은 그레이 */
+  letter-spacing: 0.5px;
 }
 
 .til-item h3 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
   margin: 8px 0;
 }
 
 .til-item p {
-  color: #666;
+  color: var(--font-secondary-color);
   line-height: 1.6;
 }
 
@@ -198,9 +270,18 @@ main {
 .comment-form-container textarea {
   padding: 12px;
   border: 1px solid var(--divider-color);
-  border-radius: 6px;
+  border-radius: 2px;
   font-family: inherit;
   font-size: 0.95rem;
+  background-color: #15151e; /* 폼 내부 다크 배경 */
+  color: var(--font-default-color); /* 입력 텍스트 화이트 */
+  transition: border-color 0.2s;
+}
+
+.comment-form-container input:focus,
+.comment-form-container textarea:focus {
+  outline: none;
+  border-color: #888;
 }
 
 .comment-form-container textarea {
@@ -215,11 +296,15 @@ main {
 }
 
 .comment-buttons button {
-  padding: 8px 20px;
+  padding: 10px 24px;
   border: none;
-  border-radius: 6px;
+  border-radius: 2px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s;
 }
 
 .comment-buttons button[type="button"] {
@@ -228,8 +313,12 @@ main {
 }
 
 .comment-buttons button[type="reset"] {
-  background-color: #eee;
-  color: #666;
+  background-color: #38383f; /* 다크 버튼 배경 */
+  color: #fff;
+}
+
+.comment-buttons button:hover {
+  opacity: 0.85;
 }
 
 .comment-list {
@@ -237,22 +326,25 @@ main {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding: 0;
 }
 
 .comment-item {
   padding: 16px;
   background-color: var(--card-bg-color);
-  border-radius: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--divider-color);
 }
 
 .comment-item strong {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--primary-color);
+  font-weight: 700;
 }
 
 .comment-item p {
   margin-top: 6px;
-  color: #555;
+  color: var(--font-secondary-color);
   line-height: 1.6;
 }
 
@@ -260,8 +352,11 @@ main {
 footer {
   text-align: center;
   padding: 32px;
-  color: #aaa;
+  background-color: var(--nav-bg-color); /* 푸터도 딥 다크 */
+  color: #888;
   font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* 기본 정보 테이블 */
@@ -272,20 +367,23 @@ footer {
 
 .info-table th,
 .info-table td {
-  padding: 12px 16px;
+  padding: 14px 16px;
   border-bottom: 1px solid var(--divider-color);
   text-align: left;
 }
 
 .info-table th {
   width: 140px;
-  color: #555;
+  color: var(--font-default-color); /* 화이트 텍스트 */
   font-weight: 700;
-  background-color: var(--card-bg-color);
+  background-color: #15151e; /* 다크 헤더 */
+  text-transform: uppercase;
+  font-size: 0.9rem;
 }
 
 .info-table td {
-  color: #333;
+  color: var(--font-secondary-color);
+  background-color: var(--card-bg-color); /* 다크 바디 */
 }
 
 /* TIL 작성 폼 */
@@ -296,8 +394,9 @@ footer {
   padding: 24px;
   margin-bottom: 32px;
   border: 1px solid var(--divider-color);
-  border-radius: 8px;
-  background-color: var(--card-bg-color);
+  border-radius: 4px;
+  background-color: var(--card-bg-color); /* 다크 폼 배경 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .til-form .form-group {
@@ -307,18 +406,28 @@ footer {
 }
 
 .til-form label {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  color: #555;
+  color: var(--font-default-color); /* 화이트 텍스트 */
+  text-transform: uppercase;
 }
 
 .til-form input,
 .til-form textarea {
-  padding: 10px 12px;
+  padding: 12px;
   border: 1px solid var(--divider-color);
-  border-radius: 6px;
+  border-radius: 2px;
   font-family: inherit;
   font-size: 0.95rem;
+  background-color: #15151e; /* 다크 입력 필드 */
+  color: var(--font-default-color); /* 입력 텍스트 화이트 */
+  transition: border-color 0.2s;
+}
+
+.til-form input:focus,
+.til-form textarea:focus {
+  outline: none;
+  border-color: var(--primary-color); /* 포커스 시 레드 강조 */
 }
 
 .til-form textarea {
@@ -333,11 +442,15 @@ footer {
 }
 
 .til-form button {
-  padding: 8px 20px;
+  padding: 10px 24px;
   border: none;
-  border-radius: 6px;
+  border-radius: 2px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background-color 0.2s;
 }
 
 .til-form button[type="submit"] {
@@ -345,11 +458,51 @@ footer {
   color: #fff;
 }
 
-.til-form button[type="reset"] {
-  background-color: #eee;
-  color: #666;
+.til-form button[type="submit"]:hover {
+  background-color: #b30500;
 }
 
+.til-form button[type="reset"] {
+  background-color: #38383f; /* 다크 버튼 배경 */
+  color: #fff;
+}
+
+.til-form button[type="reset"]:hover {
+  background-color: #555;
+}
+
+/* 소셜 링크 컨테이너 */
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* 소셜 링크 버튼 기본 스타일 (흰색 글씨 + 다크 배경) */
+.social-item {
+  text-decoration: none;
+  color: #ffffff; /* 글자와 아이콘을 흰색으로! */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background-color: #15151e; /* 버튼 배경도 다크하게 */
+  border: 1px solid var(--divider-color); /* 테두리 라인 */
+  border-radius: 2px; /* 날렵한 사각형 */
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+/* 마우스 올렸을 때 효과 (F1 레드 강조) */
+.social-item:hover {
+  background-color: var(--primary-color); /* 배경을 레드로 */
+  border-color: var(--primary-color);
+  color: #ffffff;
+  transform: translateY(-3px); /* 살짝 위로 떠오르는 효과 */
+  box-shadow: 0 4px 12px rgba(225, 6, 0, 0.3); /* 붉은빛 그림자 */
+}
 /* 영상 삽입 */
 .work-card iframe,
 .work-card video {
@@ -357,15 +510,5 @@ footer {
   max-width: 480px;
   aspect-ratio: 16 / 9;
   border: none;
-  border-radius: 4px;
-}
-
-/* 변수 */
-:root {
-  --primary-color: #4a7c59;
-  --nav-bg-color: #fff;
-  --hero-bg-color: #A7C7E7;
-  --card-bg-color: #fafafa;
-  --divider-color: #e8e8e8;
-  --font-default-color: #333;
+  border-radius: 2px;
 }
